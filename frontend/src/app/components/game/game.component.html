@@ -1,0 +1,42 @@
+<div class="game">
+  <div class="center">
+    <button mat-raised-button (click)="startGame()">Start game</button>
+  </div>
+  <div class="center">
+    <mat-button-toggle-group [(value)]="role">
+      <mat-button-toggle value="operative">Operative</mat-button-toggle>
+      <mat-button-toggle value="spymaster">Spymaster</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="flex-container">
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+    <div class="word">TEST</div>
+  </div>
+  <button mat-raised-button (click)="nextGame()" class="nextgame">
+    Next game
+  </button>
+</div>

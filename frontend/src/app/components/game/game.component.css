@@ -1,0 +1,28 @@
+.game {
+  margin: 5%;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 100px;
+}
+
+.word {
+  flex: 1 0 16%;
+  background-color: #f7f7f7;
+  border: solid 2px #ddd;
+  text-align: center;
+  margin: 10px;
+}
+
+.nextgame {
+  float: right;
+}
