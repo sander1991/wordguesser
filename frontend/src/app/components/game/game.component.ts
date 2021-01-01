@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketioService } from 'src/app/services/socketio.service';
 
 @Component({
   selector: 'app-game',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
   role = 'operative';
 
-  constructor() {}
+  constructor(private socketIoService: SocketioService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.socketIoService.connect();
+  }
 
   nextGame() {}
+
+  startGame() {}
 }
