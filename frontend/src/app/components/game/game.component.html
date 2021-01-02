@@ -1,8 +1,8 @@
 <div class="game">
-  <div class="center">
+  <div class="center" *ngIf="!words">
     <button mat-raised-button (click)="startGame()">Start game</button>
   </div>
-  <div class="center">
+  <div class="center" *ngIf="words">
     <mat-button-toggle-group [(value)]="role">
       <mat-button-toggle value="operative">Operative</mat-button-toggle>
       <mat-button-toggle value="spymaster">Spymaster</mat-button-toggle>
@@ -10,11 +10,35 @@
   </div>
 
   <div class="flex-container">
-    <div class="word" *ngFor="let word of words">
-      {{ word?.word | uppercase }}
-    </div>
+    <ng-container *ngFor="let word of words">
+      <div
+        class="word"
+        *ngIf="role === 'spymaster' && !word.selected"
+        [ngStyle]="{ 'border-color': word.color }"
+      >
+        {{ word?.word | uppercase }}
+      </div>
+      <div
+        class="word"
+        *ngIf="role === 'operative' && !word.selected"
+        (click)="clickWord(word)"
+      >
+        {{ word?.word | uppercase }}
+      </div>
+      <div
+        class="word"
+        *ngIf="word.selected"
+        [ngStyle]="{
+          'background-color': word.color,
+          'border-color': word.color,
+          color: '#ffffff'
+        }"
+      >
+        {{ word?.word | uppercase }}
+      </div>
+    </ng-container>
   </div>
-  <button mat-raised-button (click)="nextGame()" class="nextgame">
+  <button mat-raised-button (click)="nextGame()" class="nextgame" *ngIf="words">
     Next game
   </button>
 </div>

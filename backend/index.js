@@ -17,6 +17,10 @@ io.on("connection", (socket) => {
         })
     })
 
+    socket.on('gameUpdate', ({ gameId, words }) => {
+        io.to(gameId).emit(gameId, words);
+    })
+
     socket.on('joinGame', ({ gameId }) => {
         socket.join(gameId);
         console.log("a player joined the room " + gameId);

@@ -21,6 +21,10 @@ export class SocketioService {
     this.socket.emit('startGame', { gameId: gameId });
   }
 
+  sendGameUpdate(gameId, words) {
+    this.socket.emit('gameUpdate', { gameId: gameId, words: words });
+  }
+
   recieveJoinedPlayers() {
     return new Observable((observer) => {
       this.socket.on('joinGame', (message) => {
@@ -32,6 +36,14 @@ export class SocketioService {
   recieveStartGame() {
     return new Observable((observer) => {
       this.socket.on('startGame', (words) => {
+        observer.next(words);
+      });
+    });
+  }
+
+  recieveGameUpdate(gameId) {
+    return new Observable((observer) => {
+      this.socket.on(gameId, (words) => {
         observer.next(words);
       });
     });

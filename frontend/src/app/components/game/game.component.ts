@@ -24,6 +24,7 @@ export class GameComponent implements OnInit {
     this.socketIoService.connect(this.gameId);
     this.recieveJoinedPlayers();
     this.recieveStartGame();
+    this.recieveGameUpdate();
   }
 
   nextGame() {
@@ -32,6 +33,11 @@ export class GameComponent implements OnInit {
 
   startGame() {
     this.socketIoService.startGame(this.gameId);
+  }
+
+  clickWord(word) {
+    word.selected = true;
+    this.socketIoService.sendGameUpdate(this.gameId, this.words);
   }
 
   recieveJoinedPlayers() {
@@ -44,8 +50,14 @@ export class GameComponent implements OnInit {
 
   recieveStartGame() {
     this.socketIoService.recieveStartGame().subscribe((words) => {
+      this.role = 'operative';
       this.words = words;
-      console.log(this.words);
+    });
+  }
+
+  recieveGameUpdate() {
+    this.socketIoService.recieveGameUpdate(this.gameId).subscribe((words) => {
+      this.words = words;
     });
   }
 }
