@@ -10,31 +10,9 @@
   </div>
 
   <div class="flex-container">
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
-    <div class="word">TEST</div>
+    <div class="word" *ngFor="let word of words">
+      {{ word?.word | uppercase }}
+    </div>
   </div>
   <button mat-raised-button (click)="nextGame()" class="nextgame">
     Next game
